@@ -24,7 +24,7 @@ cloudinary.config({
 });
 
 // --- MONGODB CONFIGURATION ---
-const MONGODB_URI = "mongodb+srv://medikidssite_db_user:medikidssite_db_password@cluster0.mcld8jo.mongodb.net/?appName=Cluster0";
+const MONGODB_URI = "mongodb+srv://mongomedi47_db_user:mongomedi47_db_password@cluster0.qe7u1xn.mongodb.net/?appName=Cluster0";
 const PORT = process.env.PORT || 5001;
 
 // --- MONGOOSE SCHEMAS ---
