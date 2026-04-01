@@ -50,6 +50,7 @@ const newsSchema = new mongoose.Schema({
 // 3. Partner Logos Schema
 const partnerSchema = new mongoose.Schema({
   name: { type: String, required: false, trim: true }, // Optional company name
+  link: { type: String, required: false, trim: true },
   logoUrl: { type: String, required: true },
   logoPublicId: { type: String, required: true },
   uploadDate: { type: Date, default: Date.now },
@@ -373,6 +374,7 @@ app.post("/partners/upload", checkDbConnection, uploadImage.single("logo"), asyn
 
     const newPartner = new Partner({
       name: name ? name.trim() : '',
+      link: req.body.link ? req.body.link.trim() : '',
       logoUrl: req.file.path,
       logoPublicId: req.file.filename,
     });
@@ -427,6 +429,8 @@ app.put("/partners/:id", checkDbConnection, uploadImage.single("logo"), async (r
     if (name !== undefined) {
       partner.name = name.trim();
     }
+
+    if (req.body.link) partner.link = req.body.link.trim();
 
     // Update logo if new one is uploaded
     if (req.file) {
